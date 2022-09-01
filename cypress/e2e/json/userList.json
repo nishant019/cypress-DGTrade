@@ -1,0 +1,24 @@
+{
+    "userCode":"12345699",
+    "userName":"Test User",
+    "phnNo":"9877743210",
+    "email":"test@email.com",
+    "branch":"PKR",
+
+    "yes":"Yes",
+    "no":"No",
+    "superUser":"Super User",
+    "branchUser":"Branch User",
+    "branchAdmin":"Branch Admin",
+    "mGender":"MALE",
+    "fGender":"FEMALE",
+    "oGender":"OTHER",
+
+    "search":"Nishant Poudel",
+    
+    "eUserCode":"2985",
+    "eUserName":"Nishant Poudel",
+    "ePhnNo":"9860476245",
+    "eEmail":"test3@email.com",
+    "eBranch":"H-O"
+}
