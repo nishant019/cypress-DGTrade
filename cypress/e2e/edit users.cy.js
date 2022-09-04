@@ -1,6 +1,5 @@
-import {
-  login
-} from '/CY_DG_Trade/cypress/support/commands.js';
+const { login } = require("../support/commands")
+
 /**
  * Values used from userList.json
  * Other Values like userCode,userName etc are not edit values and is only used in "Add User.cy.js"
@@ -30,7 +29,7 @@ describe('Edit A user', () => {
     login()
     cy.visit('/setup/user')
     // Import Json
-    cy.readFile("/CY_DG_Trade/cypress/e2e/json/userList.json").then((val)=>{
+    cy.readFile("/DG Trade/cypress/e2e/json/userList.json").then((val)=>{
     //Using value of search from json to retrive its data in table and editing first index of the table
     cy.xpath("//input[@aria-label='Search']").focus().type(val.search).should('have.value',val.search).wait(500)
     var search = val.search.toUpperCase();

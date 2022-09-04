@@ -8,7 +8,7 @@ describe('Company login', () => {
     cy.get('span.text-danger').contains('Invalid Username IllegalUser')
   })
   it('LogIn Company User, Successful login', () => {
-      cy.readFile('D:/CY_DG_Trade/cypress/e2e/values.json').then((val) => {
+      cy.readFile('/DG Trade/cypress/e2e/json/values.json').then((val) => {
       cy.visit('baseUrl/login')
       cy.get(':nth-child(2) > .input-group > .form-control').click().type(val.userId).should('have.value',val.userId)
       cy.get(':nth-child(3) > .input-group > .form-control').click().type(val.password).should('have.value',val.password)
