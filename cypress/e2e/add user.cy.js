@@ -9,22 +9,22 @@ describe('Add User', () => {
     //After login goto link for user list and creating a user
     cy.visit('/setup/user')
     //readFile to get values from addUser.josn file
-    cy.readFile("/DG Trade/cypress/e2e/json/userList.json").then((val)=>{
+    cy.readFile("cypress/e2e/json/userList.json").then((val)=>{
+      //input values
       cy.xpath("//input[@name='userCode']").focus().type(val.userCode).should('have.value',val.userCode)
       cy.xpath("//input[@name='userName']").focus().type(val.userName).should('have.value',val.userName)
       cy.xpath("//input[@name='mobileNumber']").focus().type(val.phnNo).should('have.value',val.phnNo)
       cy.xpath("//input[@name='emailAddress']").focus().type(val.email).should('have.value',val.email)
-      
-      cy.xpath("//select").eq(0).select(val.mGender).contains(val.mGender)
-      cy.xpath("//select").eq(1).select(val.branch).contains(val.branch)
-      cy.xpath("//select").eq(2).select(val.yes).contains(val.yes)
-      cy.xpath("//select").eq(3).select(val.yes).contains(val.yes)
-      cy.xpath("//select").eq(4).select(val.branchUser).contains(val.branchUser)
+      //Selecting values
+      cy.xpath("//div[@class='card-body']//select").eq(0).select(val.mGender).contains(val.mGender)
+      cy.xpath("//div[@class='card-body']//select").eq(1).select(val.branch).contains(val.branch)
+      cy.xpath("//div[@class='card-body']//select").eq(2).select(val.yes).contains(val.yes)
+      cy.xpath("//div[@class='card-body']//select").eq(3).select(val.yes).contains(val.yes)
+      cy.xpath("//div[@class='card-body']//select").eq(4).select(val.branchUser).contains(val.branchUser)
       //changing username into upper case to match value in retrived data
+      //searching added username to verify if user is added or not
       var userName = val.userName.toUpperCase(); 
       cy.xpath("//input[@aria-label='Search']").focus().clear().type(val.userName).should('have.value',val.userName).wait(500)
-      
-      
       //verify for each value if added values is updated or not
       cy.xpath("//tr[@class='MuiTableRow-root MuiTableRow-hover']").children()
         .should('contain',userName)
