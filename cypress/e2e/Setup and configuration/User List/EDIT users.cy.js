@@ -1,4 +1,4 @@
-const { login } = require("../support/commands")
+const { login } = require("/cypress/support/commands")
 
 /**
  * Values used from userList.json
@@ -29,7 +29,7 @@ describe('Edit A user', () => {
     login()
     cy.visit('/setup/user').wait(1000)
     // Import Json
-    cy.readFile("cypress/e2e/json/userList.json").then((val)=>{
+    cy.readFile("cypress/json fields/userList.json").then((val)=>{
       
     //Using value of search from json to retrive its data in table and editing first index of the table
     cy.xpath("//input[@aria-label='Search']").eq(1).focus().type(val.search).should('have.value',val.search).wait(500)

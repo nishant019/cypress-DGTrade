@@ -1,4 +1,4 @@
-const { login } = require("../support/commands")
+const { login } = require("/cypress/support/commands")
 describe('Client Module-> Client Info', () => {
   // it('Checking filter', () => {
   //   login()
