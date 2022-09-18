@@ -13,13 +13,14 @@
     "mGender":"MALE",
     "fGender":"FEMALE",
     "oGender":"OTHER",
-
+    "active":"ACTIVE",
+    "inactive":"INACTIVE",
     "search":"Nishant Poudel",
     
-    "eUserCode":"2985",
+    "eUserCode":"NISHANT",
     "eUserName":"Nishant Poudel",
     "ePhnNo":"9860476245",
-    "eEmail":"test3@email.com",
+    "eEmail":"npoudel018@outlook.com",
     "eBranch":"H-O",
     "tdBranchUser":"Branch Normal User"
 }

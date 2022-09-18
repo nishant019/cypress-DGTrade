@@ -27,11 +27,12 @@ describe('Edit A user', () => {
   it('Searches ,edits and verifies edited values',()=>{
     //use login function 
     login()
-    cy.visit('/setup/user')
+    cy.visit('/setup/user').wait(1000)
     // Import Json
-    cy.readFile("/DG Trade/cypress/e2e/json/userList.json").then((val)=>{
+    cy.readFile("cypress/e2e/json/userList.json").then((val)=>{
+      
     //Using value of search from json to retrive its data in table and editing first index of the table
-    cy.xpath("//input[@aria-label='Search']").focus().type(val.search).should('have.value',val.search).wait(500)
+    cy.xpath("//input[@aria-label='Search']").eq(1).focus().type(val.search).should('have.value',val.search).wait(500)
     var search = val.search.toUpperCase();
     cy.xpath("//tbody[@class='MuiTableBody-root']").contains(search)
     cy.xpath("//button[@title='edit']").eq(0).click({force:true}) //clicking edit icon of first index
@@ -48,23 +49,24 @@ describe('Edit A user', () => {
     cy.xpath("//input[@name='emailAddress']").focus().clear().type(val.eEmail).should('have.value',val.eEmail)
     
     //||  Select Male "mGender" || 
-    cy.xpath("//select").eq(0).select(val.mGender).contains(val.mGender)
+    cy.xpath("//div[@class='card-body']//select").eq(0).select(val.mGender).contains(val.mGender)
     //||  Select Branch "eBranch" ||
-    cy.xpath("//select").eq(1).select(val.eBranch).contains(val.eBranch)
+    cy.xpath("//div[@class='card-body']//select").eq(1).select(val.eBranch).contains(val.eBranch)
     //||  Select Allow Payment yes/ no value  ||
-    cy.xpath("//select").eq(2).select(val.no).contains(val.no)
+    cy.xpath("//div[@class='card-body']//select").eq(2).select(val.no).contains(val.no)
     //||  Select Allow Purchase Share yes/ no value  ||
-    cy.xpath("//select").eq(3).select(val.yes).contains(val.yes)
+    cy.xpath("//div[@class='card-body']//select").eq(3).select(val.yes).contains(val.yes)
     //||  Select User Type branchUser,branchAdmin,superUser  ||
-    cy.xpath("//select").eq(4).select(val.superUser).contains(val.superUser)
+    cy.xpath("//div[@class='card-body']//select").eq(4).select(val.superUser).contains(val.superUser)
+    cy.xpath("//div[@class='card-body']//select").eq(5).select(val.active).contains(val.active)
     //Submit Form
-    cy.xpath("//button[@type='submit']").click().wait(1000)
+    //cy.xpath("//button[@type='submit']").click().wait(1000)
     //Search Newly added user
-    cy.xpath("//input[@aria-label='Search']").focus().clear().type(val.eUserCode).should('have.value',val.eUserCode).wait(500)
+    cy.xpath("//input[@aria-label='Search']").eq(1).focus().clear().type(val.eUserCode).should('have.value',val.eUserCode).wait(500)
     //changing username into upper case to match value in retrived data
     var userName = val.eUserName.toUpperCase(); 
     //verify for each value if added values is updated or not
-    cy.xpath("//tr[@class='MuiTableRow-root MuiTableRow-hover']").children()
+    cy.xpath("//tbody[@class='MuiTableBody-root']").children()
       .should('contain',userName)
       .and('contain',val.eUserCode)
       .and('contain',val.eEmail)
