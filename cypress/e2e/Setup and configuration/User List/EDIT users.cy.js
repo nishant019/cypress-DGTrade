@@ -61,19 +61,23 @@ describe('Edit A user', () => {
     cy.xpath("//div[@class='card-body']//select").eq(5).select(val.active).contains(val.active)
     //Submit Form
     //cy.xpath("//button[@type='submit']").click().wait(1000)
-    //Search Newly added user
-    cy.xpath("//input[@aria-label='Search']").eq(1).focus().clear().type(val.eUserCode).should('have.value',val.eUserCode).wait(500)
-    //changing username into upper case to match value in retrived data
-    var userName = val.eUserName.toUpperCase(); 
-    //verify for each value if added values is updated or not
-    cy.xpath("//tbody[@class='MuiTableBody-root']").children()
-      .should('contain',userName)
-      .and('contain',val.eUserCode)
-      .and('contain',val.eEmail)
-      .and('contain',val.ePhnNo)
-      .and('contain',val.superUser)
-      .and('contain',val.mGender)
-      .and('contain',val.eBranch)    
+
+    /**______________________________________
+      Search Newly added user
+      uncomment below script only when submit
+    */
+   //  cy.xpath("//input[@aria-label='Search']").eq(1).focus().clear().type(val.eUserCode).should('have.value',val.eUserCode).wait(500)
+   //  //changing username into upper case to match value in retrived data
+   //  var userName = val.eUserName.toUpperCase(); 
+   //  //verify for each value if added values is updated or not
+   //  cy.xpath("//tbody[@class='MuiTableBody-root']").children()
+   //    .should('contain',userName)
+   //    .and('contain',val.eUserCode)
+   //    .and('contain',val.eEmail)
+   //    .and('contain',val.ePhnNo)
+   //    .and('contain',val.superUser)
+   //    .and('contain',val.mGender)
+   //    .and('contain',val.eBranch)    
     
       
     })
